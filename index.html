@@ -1,0 +1,626 @@
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Date với anh nhé ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      width:100%;
+      min-height:100vh;
+      overflow-x:hidden;
+
+      background:
+      linear-gradient(
+        135deg,
+        #ffb6c1,
+        #ffd1dc,
+        #ffe4e1
+      );
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      padding:30px;
+
+      position:relative;
+    }
+
+    /* Tim bay */
+
+    .heart{
+      position:fixed;
+      bottom:-20px;
+      color:#ff4d6d;
+      animation: floatUp linear forwards;
+      pointer-events:none;
+      opacity:0.7;
+      z-index:1;
+    }
+
+    @keyframes floatUp{
+
+      0%{
+        transform:translateY(0) scale(1);
+        opacity:0;
+      }
+
+      10%{
+        opacity:0.8;
+      }
+
+      100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+      }
+
+    }
+
+    .box{
+      width:900px;
+
+      background:rgba(255,255,255,0.88);
+
+      backdrop-filter:blur(12px);
+
+      border-radius:35px;
+
+      padding:45px;
+
+      text-align:center;
+
+      box-shadow:
+      0 15px 50px rgba(255,105,135,0.3);
+
+      position:relative;
+      z-index:2;
+    }
+
+    h1{
+      color:#ff4d6d;
+      font-size:54px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .subtitle{
+      color:#777;
+      font-size:20px;
+      margin-bottom:40px;
+    }
+
+    /* FIX CANH GIỮA BUTTON */
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:35px;
+      margin-top:40px;
+      position:relative;
+      height:120px;
+    }
+
+    button{
+      border:none;
+      padding:18px 40px;
+      border-radius:18px;
+      font-size:22px;
+      cursor:pointer;
+      transition:0.25s;
+      font-weight:600;
+    }
+
+    #yesBtn,
+    #noBtn{
+      position:relative;
+      left:auto;
+      top:auto;
+    }
+
+    #yesBtn{
+      background:
+      linear-gradient(
+        135deg,
+        #ff4d6d,
+        #ff758f
+      );
+
+      color:white;
+
+      box-shadow:
+      0 10px 25px rgba(255,77,109,0.3);
+    }
+
+    #yesBtn:hover{
+      transform:scale(1.08);
+    }
+
+    #noBtn{
+      background:white;
+      color:#ff4d6d;
+
+      border:2px solid #ff4d6d;
+
+      transition:
+      left 0.15s ease,
+      top 0.15s ease,
+      transform 0.2s;
+    }
+
+    .love-text{
+      margin-top:20px;
+      color:#ff6b81;
+      font-size:20px;
+      font-style:italic;
+    }
+
+    .options{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:25px;
+      margin-top:30px;
+    }
+
+    .card{
+      background:#fff7f9;
+      border-radius:25px;
+      overflow:hidden;
+      cursor:pointer;
+
+      transition:0.25s;
+
+      border:3px solid transparent;
+
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .card:hover{
+      transform:translateY(-5px) scale(1.02);
+    }
+
+    .card.selected{
+      border:3px solid #ff4d6d;
+      box-shadow:
+      0 10px 30px rgba(255,77,109,0.25);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card h3{
+      padding:20px;
+      font-size:26px;
+      color:#ff4d6d;
+    }
+
+    .custom-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      min-height:320px;
+    }
+
+    .plus-box{
+      width:120px;
+      height:120px;
+
+      border-radius:50%;
+
+      background:
+      linear-gradient(
+        135deg,
+        #ff4d6d,
+        #ff8fab
+      );
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      color:white;
+      font-size:70px;
+
+      margin-bottom:25px;
+
+      box-shadow:
+      0 10px 25px rgba(255,77,109,0.3);
+    }
+
+    #customText{
+      width:100%;
+      padding:18px;
+      border-radius:16px;
+      border:2px solid #ffd1dc;
+
+      margin-top:25px;
+
+      font-size:18px;
+
+      display:none;
+      outline:none;
+    }
+
+    #customText:focus{
+      border-color:#ff4d6d;
+    }
+
+    .form{
+      margin-top:40px;
+    }
+
+    .form h2{
+      color:#ff4d6d;
+      font-size:38px;
+      margin-bottom:20px;
+    }
+
+    input{
+      padding:15px;
+      margin:10px;
+      border-radius:14px;
+      border:2px solid #ffd1dc;
+
+      font-size:18px;
+      outline:none;
+    }
+
+    input:focus{
+      border-color:#ff4d6d;
+    }
+
+    #copyBtn{
+      margin-top:25px;
+
+      background:
+      linear-gradient(
+        135deg,
+        #ff4d6d,
+        #ff758f
+      );
+
+      color:white;
+
+      box-shadow:
+      0 10px 25px rgba(255,77,109,0.25);
+    }
+
+    #copyBtn:hover{
+      transform:scale(1.05);
+    }
+
+    #result{
+      margin-top:25px;
+      font-size:22px;
+      color:#555;
+      line-height:1.8;
+    }
+
+    @media(max-width:768px){
+
+      .box{
+        width:100%;
+        padding:25px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      .subtitle{
+        font-size:16px;
+      }
+
+      .options{
+        grid-template-columns:1fr;
+      }
+
+      .form h2{
+        font-size:28px;
+      }
+
+      .buttons{
+        flex-direction:column;
+        height:auto;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8e2b9a8.mp3?filename=romantic-love-11786.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box" id="mainBox">
+
+  <h1>Đi date với anh nhé ❤️</h1>
+
+  <div class="subtitle">
+    Anh chuẩn bị hết rồi, em chỉ cần đồng ý thôi 😚
+  </div>
+
+  <div class="buttons">
+
+    <button id="yesBtn">
+      Yes 😍
+    </button>
+
+    <button id="noBtn">
+      No 😅
+    </button>
+
+  </div>
+
+  <div class="love-text">
+    “Mọi cuộc hẹn đẹp nhất đều bắt đầu bằng một chữ đồng ý...” 💕
+  </div>
+
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const mainBox = document.getElementById("mainBox");
+const bgMusic = document.getElementById("bgMusic");
+
+
+// Phát nhạc
+
+document.body.addEventListener("click", () => {
+
+  bgMusic.play().catch(() => {});
+
+}, { once:true });
+
+
+// Tim bay
+
+function createHeart(){
+
+  const heart = document.createElement("div");
+
+  heart.classList.add("heart");
+
+  heart.innerHTML = "❤";
+
+  heart.style.left = Math.random() * 100 + "vw";
+
+  heart.style.fontSize =
+    (Math.random() * 20 + 15) + "px";
+
+  heart.style.animationDuration =
+    (Math.random() * 3 + 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  },7000);
+
+}
+
+setInterval(createHeart,300);
+
+
+// Nút NO chạy khắp màn hình
+
+noBtn.addEventListener("mouseover", () => {
+
+  const maxX =
+    window.innerWidth - noBtn.offsetWidth;
+
+  const maxY =
+    window.innerHeight - noBtn.offsetHeight;
+
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+
+  noBtn.style.position = "fixed";
+
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
+
+});
+
+
+// Bấm YES
+
+yesBtn.addEventListener("click", () => {
+
+  mainBox.innerHTML = `
+
+    <h1>Em muốn mình đi đâu nè ❤️</h1>
+
+    <div class="subtitle">
+      Chọn một nơi thật vui cho buổi hẹn đầu tiên 💕
+    </div>
+
+    <div class="options">
+
+      <div class="card" data-name="đi ăn">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&auto=format&fit=crop">
+        <h3>🍜 Đi ăn</h3>
+      </div>
+
+      <div class="card" data-name="đi xem phim">
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+        <h3>🎬 Đi xem phim</h3>
+      </div>
+
+      <div class="card" data-name="đi cafe">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop">
+        <h3>☕ Đi cafe</h3>
+      </div>
+
+      <div class="card" data-name="đi trung tâm thương mại">
+        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?q=80&w=1200&auto=format&fit=crop">
+        <h3>🛍️ Trung tâm thương mại</h3>
+      </div>
+
+      <div class="card custom-card" data-name="custom">
+
+        <div class="plus-box">+</div>
+
+        <h3>💖 Đi theo ý em</h3>
+
+      </div>
+
+    </div>
+
+    <input
+      type="text"
+      id="customText"
+      placeholder="Ví dụ: đi biển, đi Đà Lạt, đi concert..."
+    >
+
+    <div class="form">
+
+      <h2>Chọn ngày và giờ 📅</h2>
+
+      <input type="date" id="dateInput">
+
+      <input type="time" id="timeInput">
+
+      <br>
+
+      <button id="copyBtn">
+        Copy tin nhắn ❤️
+      </button>
+
+      <div id="result"></div>
+
+    </div>
+
+  `;
+
+
+  let selectedOption = "";
+
+  const cards =
+    document.querySelectorAll(".card");
+
+  const customText =
+    document.getElementById("customText");
+
+
+  cards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+      cards.forEach(c =>
+        c.classList.remove("selected")
+      );
+
+      card.classList.add("selected");
+
+      if(card.dataset.name === "custom"){
+
+        customText.style.display = "block";
+
+        customText.focus();
+
+        selectedOption = customText.value;
+
+      }else{
+
+        customText.style.display = "none";
+
+        selectedOption = card.dataset.name;
+
+      }
+
+    });
+
+  });
+
+
+  customText.addEventListener("input", () => {
+
+    selectedOption = customText.value;
+
+  });
+
+
+  document.getElementById("copyBtn")
+  .addEventListener("click", () => {
+
+    const date =
+      document.getElementById("dateInput").value;
+
+    const time =
+      document.getElementById("timeInput").value;
+
+    if(!selectedOption){
+
+      alert("Chọn địa điểm trước nha 😚");
+      return;
+
+    }
+
+    if(!date || !time){
+
+      alert("Chọn ngày giờ nữa nhé ❤️");
+      return;
+
+    }
+
+    const formattedDate = new Date(date);
+
+    const day =
+      String(formattedDate.getDate())
+      .padStart(2,'0');
+
+    const month =
+      String(formattedDate.getMonth()+1)
+      .padStart(2,'0');
+
+    const message =
+      `Em muốn ${selectedOption} vào ${day}/${month} lúc ${time} ❤️`;
+
+    navigator.clipboard.writeText(message);
+
+    document.getElementById("result")
+    .innerHTML = `
+
+      <b>Đã copy tin nhắn:</b>
+
+      <br><br>
+
+      ${message}
+
+      <br><br>
+
+      Chỉ cần gửi cho anh là mình đi thôi 😘
+
+    `;
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
